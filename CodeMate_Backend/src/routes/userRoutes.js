@@ -109,13 +109,15 @@ userRouter.get("/feed", userAuth, async (req, res) => {
     const skip=(page-1)*limit;
     const loggedInUserId = req.user._id; // usually req.user contains _id
     // Step 1: Find all connection requests involving the logged-in user
-    const ConnectionRequest = await connectionRequest.find({
-      $or: [
-        { fromUserId: loggedInUserId },
-        { toUserId: loggedInUserId },
-      ],
-    }).select("fromUserId toUserId");
-
+   const ConnectionRequest = await connectionRequest.find({
+  status: "accepted", // 🔥 IMPORTANT
+  $or: [
+    { fromUserId: loggedInUserId },
+    { toUserId: loggedInUserId },
+  ],
+})
+const totalUsers = await User.countDocuments();
+console.log("TOTAL USERS:", totalUsers);
     // Step 2: Build a set of users to hide
     const hiddenFromUserId = new Set();
     ConnectionRequest.forEach((req) => {

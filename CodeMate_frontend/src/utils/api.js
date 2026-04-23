@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",   // 🔥 IMPORTANT
+  baseURL: "/api", 
+    // 🔥 IMPORTANT
   withCredentials: true,
 });
 

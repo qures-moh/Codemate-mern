@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import api from "./utils/api";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Connection = () => {
   const [connections, setConnections] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate=useNavigate();
+  
 
   const fetchConnections = async () => {
     try {
@@ -66,7 +70,7 @@ const Connection = () => {
               </div>
 
               {/* Action (future use) */}
-              <button className="px-4 py-1.5 text-sm rounded-lg bg-blue-900 text-white hover:bg-blue-800 transition">
+              <button className="px-4 py-1.5 text-sm rounded-lg bg-blue-900 text-white hover:bg-blue-800 transition" onClick={()=>navigate(`/Chat/${_id}`)}>
                 Message
               </button>
             </div>

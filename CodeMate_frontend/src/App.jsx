@@ -8,6 +8,7 @@ import appStore from "./utils/appStore";
 import Connection from "./Connection";
 import Request from "./Request";
 import NotFound from "./NotFound";
+import Chat from "./Chat";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
            <Route path="/profile" element={<Profile/>}/>
                  <Route path="/connections" element={<Connection/>}/>
                    <Route path="/request" element={<Request/>}/>
+                   <Route path="Chat/:id" element={<Chat/>}/>
          
 
 

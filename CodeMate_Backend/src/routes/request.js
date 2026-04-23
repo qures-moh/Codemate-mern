@@ -7,6 +7,7 @@ requestRouter.post("/request/send/:status/:toUserId",userAuth,async(req,res)=>{
   
     try{
     const fromUserId=req.user._id;
+    console.log("REQ.USER:", req.user);
     const toUserId=req.params.toUserId;
     const status=req.params.status;
     const allowedStatus=["ignored","interested"];
